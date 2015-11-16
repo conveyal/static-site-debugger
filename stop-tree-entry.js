@@ -7,7 +7,9 @@ import React, {Component, PropTypes} from 'react'
 export default class StopTreeEntry extends Component {
   static propTypes = {
     stopTrees: PropTypes.object,
-    offset: PropTypes.number
+    offset: PropTypes.number,
+    x: PropTypes.number,
+    y: PropTypes.number
   }
 
   constructor (props) {
@@ -25,7 +27,7 @@ export default class StopTreeEntry extends Component {
     let offset = this.props.offset
     let nStops = this.props.stopTrees.data[offset++]
 
-    let title = <a name={offset} onClick={e => { this.toggle(); return false }} >{offset} ({nStops} reachable stops)</a>  
+    let title = <a name={offset} onClick={e => { this.toggle(); return false }} >{this.props.x}, {this.props.y} ({nStops} reachable stops)</a>  
 
     if (this.state.expanded) {
       // parse the stop tree

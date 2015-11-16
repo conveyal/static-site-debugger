@@ -53,7 +53,7 @@ export default class Root extends Component {
         </TabList>
 
         <TabPanel>
-          <StopTreeViewer stopTrees={this.state.stopTrees} />
+          <StopTreeViewer stopTrees={this.state.stopTrees} query={this.state.query} />
         </TabPanel>
 
         <TabPanel>

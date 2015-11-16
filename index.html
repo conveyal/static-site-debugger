@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Static Site Debugger</title>
+  </head>
+  <body>
+    <div id="root">Lorem ipsum dolor sit amet.</div>
+
+    <script type="text/javascript">
+      require("babel-core/register")({
+        presets: ['react', 'es2015', 'stage-0']
+      })
+      var ReactDOM = require('react-dom')
+      var React = require('react')
+      var Root = require('./root').default
+      console.log(Root)
+      var root = React.createFactory(Root)();
+      ReactDOM.render(root, document.getElementById('root'))
+    </script>
+  </body>
+</html>

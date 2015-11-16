@@ -1,0 +1,29 @@
+{
+  "name": "static-site-debugger",
+  "version": "0.0.1",
+  "description": "Debug R5's static site output",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "electron index.js"
+  },
+  "author": "Matthew Wigginton Conway <mconway@conveyal.com>",
+  "license": "MIT",
+  "dependencies": {
+    "babel-core": "^6.1.21",
+    "babel-loader": "^6.1.0",
+    "babel-preset-es2015": "^6.1.18",
+    "babel-preset-react": "^6.1.18",
+    "babel-preset-stage-0": "^6.1.18",
+    "browsochrones": "0.0.3",
+    "electron": "^0.4.1",
+    "isomorphic-fetch": "^2.2.0",
+    "react": "^0.14.2",
+    "react-dom": "^0.14.2",
+    "react-tabs": "^0.5.1"
+  },
+  "devDependencies": {
+    "babel": "^6.1.18",
+    "webpack": "^1.12.5"
+  }
+}

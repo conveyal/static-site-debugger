@@ -1,0 +1,1 @@
+A simple file viewer for r5 [static output](http://r5.readthedocs.org/en/latest/static-output/).

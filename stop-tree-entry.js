@@ -45,7 +45,7 @@ export default class StopTreeEntry extends Component {
           {title}
           <table>
             <thead>
-              <th>Stop ID</th><th>Distance</th>
+              <td>Stop ID</td><td>Distance</td>
             </thead>
             <tbody>
               {

@@ -5,6 +5,7 @@ import React, {Component} from 'react'
 import Browsochrones from 'browsochrones'
 import {Tabs, TabList, Tab, TabPanel} from 'react-tabs'
 import StopTreeViewer from './stop-tree-viewer'
+import OriginView from './origin-view'
 
 export default class Root extends Component {
   constructor () {
@@ -17,18 +18,18 @@ export default class Root extends Component {
     // load the data specified on the command line
     console.log(`loading stop trees`)
     // get the stop trees
-    let baseUrl = 'http://localhost:4567'
-    console.log(`connecting to ${baseUrl}`)
+    this.baseUrl = 'http://localhost:4567'
+    console.log(`connecting to ${this.baseUrl}`)
 
     this.bc = new Browsochrones()
 
-    fetch(`${baseUrl}/query.json`)
+    fetch(`${this.baseUrl}/query.json`)
     .then(query => query.json())
     .then(query => {
       this.bc.setQuery(query)
       console.log('retrieved query')
 
-      fetch(`${baseUrl}/stop_trees.dat`)
+      fetch(`${this.baseUrl}/stop_trees.dat`)
         .then(data => data.arrayBuffer())
         .then(data => {
           console.log('retrieved stop trees')
@@ -57,7 +58,19 @@ export default class Root extends Component {
         </TabPanel>
 
         <TabPanel>
-          <div>Lorem ipsum dolor sit amet.</div>
+        <div>
+          <input placeholder='x,y' onBlur={text => {
+            let [x, y] = text.target.value.split(',')
+            if (x !== undefined && y !== undefined) {
+              let state = Object.assign({}, this.state)
+              state.x = x | 0
+              state.y = y | 0
+              this.setState(state)
+            }
+          }} />
+          </div>
+
+          {(this.state != null && this.state.x != null && this.state.y != null ? <OriginView x={this.state.x} y={this.state.y} baseUrl={this.baseUrl} browsochrones={this.bc}   /> : <div>Enter an origin</div>)}
         </TabPanel>
       </Tabs>
       )
